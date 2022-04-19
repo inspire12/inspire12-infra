@@ -5,17 +5,17 @@ services:
     image: debezium/zookeeper:1.2
     restart: always
     ports:
-      - 2181:2181
-      - 2182:2182
-      - 2183:2183
+      - 8981:2181
+      - 8982:2182
+      - 8983:2183
 
   kafka:
     image: debezium/kafka:1.2
     #    restart: always
     ports:
-      - 9092:9092
-      - 9093:9092
-      - 9094:9092
+      - 8992:9092
+      - 8993:9092
+      - 8994:9092
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     links:
@@ -30,7 +30,7 @@ services:
   kafka_manager:
     image: hlebalbau/kafka-manager:stable
     ports:
-      - "9000:9000"
+      - "8990:9000"
     environment:
       ZK_HOSTS: "zookeeper:2181,zookeeper:2888,zookeeper:3888"
       APPLICATION_SECRET: "random-secret"
@@ -39,7 +39,7 @@ services:
     image: debezium/connect:1.2
     #    restart: always
     ports:
-      - 8083:8083
+      - 8983:8083
     links:
       - zookeeper
       - kafka
@@ -57,7 +57,7 @@ services:
       - kafka
       - connect
     ports:
-      - "8088:8088"
+      - "8988:8088"
     environment:
       KSQL_CONFIG_DIR: "/etc/ksql"
       KSQL_LOG4J_OPTS: "-Dlog4j.configuration=file:/etc/ksql/log4j-rolling.properties"

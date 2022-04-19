@@ -39,7 +39,7 @@ services:
     image: debezium/connect:1.2
     #    restart: always
     ports:
-      - 8993:8083
+      - 8973:8083
     links:
       - zookeeper
       - kafka

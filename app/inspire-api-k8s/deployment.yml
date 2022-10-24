@@ -15,8 +15,6 @@ spec:
     spec:
       containers:
         - name: inspire12-api
-          command: [ "sleep" ]
-          args: [ "infinity" ]
           image: inspire12/inspire12-api:0.0.3-SNAPSHOT
           # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent

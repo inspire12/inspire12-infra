@@ -3,6 +3,11 @@ kind: Deployment # Kubernetes resource kind we are creating
 metadata:
   name: inspire12-api
 spec:
+  containers:
+    - name: err-container
+      command: [ "sleep" ]
+      args: [ "infinity" ]
+
   selector:
     matchLabels:
       app: inspire12-api

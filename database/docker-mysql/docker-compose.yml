@@ -12,13 +12,3 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=inspire12_api
-
-  mongo:
-    image: mongo:5.0
-#    restart: always
-    ports:
-      - 27017:27017
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=inspire12_api

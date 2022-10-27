@@ -8,9 +8,10 @@ services:
       - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
       - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "8672:5672"
+      - "8172:15672"
+      - "8613:61613"
     environment:
       RABBITMQ_ERLANG_COOKIE: "RabbitMQ-My-Cookies"
       RABBITMQ_DEFAULT_USER: "admin"
-      RABBITMQ_DEFAULT_PASS: "rabbitpassword"
+      RABBITMQ_DEFAULT_PASS: "abcde12#"

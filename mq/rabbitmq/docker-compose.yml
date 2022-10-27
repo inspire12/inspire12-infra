@@ -1,7 +1,7 @@
 version: '3'
 services:
   rabbitmq:
-    image: rabbitmq:3-management-alpine
+    image: rabbitmq:3-management
     container_name: rabbitmq-stream
     volumes:
       - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
@@ -9,6 +9,7 @@ services:
       - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
     ports:
       - "8672:5672"
+      - "8171:15671"
       - "8172:15672"
       - "8613:61613"
     environment:

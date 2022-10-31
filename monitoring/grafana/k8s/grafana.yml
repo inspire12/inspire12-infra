@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
+  storageClassName: standard
   resources:
     requests:
       storage: 1Gi
@@ -80,3 +80,11 @@ spec:
     app: grafana
   sessionAffinity: None
   type: LoadBalancer
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---

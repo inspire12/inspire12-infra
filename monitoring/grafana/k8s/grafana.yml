@@ -41,7 +41,7 @@ spec:
           image: grafana/grafana:9.1.0
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8030
+            - containerPort: 3000
               name: http-grafana
               protocol: TCP
           readinessProbe:

@@ -5,6 +5,11 @@
 - https://httpbin.org/
 - https://jsonplaceholder.typicode.com/
 - https://dummyjson.com/
+## Open api 
+- https://www.data.go.kr/
+- https://open.neis.go.kr/portal/data/dataset/searchDatasetPage.do
+- https://data.gg.go.kr/portal/intro/develop/searchBulletinPage.do
+- ...
 
 # Tools
 - intellij

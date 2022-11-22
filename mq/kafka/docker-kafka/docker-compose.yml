@@ -21,9 +21,7 @@ services:
     links:
       - zookeeper
     environment:
-      - ZOOKEEPER_CONNECT=zookeeper:2181,zookeeper:2182,zookeeper:2183
-      - HOST_NAME=kafka
-      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - ZOOKEEPER_CONNECT=localhost:2181,localhost:2182,localhost:2183
     depends_on:
       - zookeeper
 
@@ -32,7 +30,7 @@ services:
     ports:
       - "9000:9000"
     environment:
-      ZK_HOSTS: "zookeeper:2181,zookeeper:2888,zookeeper:3888"
+      ZK_HOSTS: "localhost:2181,localhost:2182,localhost:2183"
       APPLICATION_SECRET: "random-secret"
 
   connect:
@@ -44,7 +42,7 @@ services:
       - zookeeper
       - kafka
     environment:
-      - BOOTSTRAP_SERVERS=kafka:9092
+      - BOOTSTRAP_SERVERS=http://0.0.0.0:9092
       - GROUP_ID=1
       - CONFIG_STORAGE_TOPIC=my_connect_configs
       - OFFSET_STORAGE_TOPIC=my_connect_offsets
@@ -61,7 +59,7 @@ services:
     environment:
       KSQL_CONFIG_DIR: "/etc/ksql"
       KSQL_LOG4J_OPTS: "-Dlog4j.configuration=file:/etc/ksql/log4j-rolling.properties"
-      KSQL_BOOTSTRAP_SERVERS: "kafka:9092"
+      KSQL_BOOTSTRAP_SERVERS: "http://0.0.0.0:9092"
       KSQL_HOST_NAME: ksql-server
       KSQL_APPLICATION_ID: "cp-all-in-one"
       KSQL_LISTENERS: "http://0.0.0.0:8088"

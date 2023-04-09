@@ -7,7 +7,7 @@ services:
       - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app,grafana-clock-panel,grafana-simple-json-datasource
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /root/grafana/config:/var/lib/grafana
+      - ~/grafana/config:/Users/inspire12/var/lib/grafana
     user: '472'
     ports:
       - 8030:3000

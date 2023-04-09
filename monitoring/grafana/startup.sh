@@ -1,6 +1,7 @@
-sudo mkdir -p /root/grafana
-sudo mkdir -p /root/grafana/config
-sudo chown 472.472 /root/grafana/config
+sudo mkdir -p ./grafana
+sudo mkdir -p ./grafana/config
+sudo mkdir -p ./grafana/plugins
+sudo chown 472.472 ./grafana/config
 
 docker-compose build
 docker-compose down

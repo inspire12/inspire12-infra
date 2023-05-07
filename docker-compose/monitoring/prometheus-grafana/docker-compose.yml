@@ -4,7 +4,7 @@ services:       # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - ./prometheus/config:/etc/prometheus
+      - ./prometheus/config:/etc/prometheus/
       - ./prometheus/volume:/prometheus
     ports:
       - 9090:9090

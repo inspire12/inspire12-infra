@@ -1,7 +1,7 @@
 version: '3'
 services:
   rabbitmq:
-    image: rabbitmq:3.5-management
+    image: rabbitmq:3.11-management
     container_name: rabbitmq-stream
     volumes:
       - ./.docker/rabbitmq/etc/:/etc/rabbitmq/

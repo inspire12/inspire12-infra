@@ -1,7 +1,7 @@
 version: '3'
 services:
   sentinel1:
-    image: redis
+    image: redis:7.0.11
     container_name: redis-sentinel-1
     ports:
       - 26379:26379
@@ -9,7 +9,7 @@ services:
     volumes:
       - ./sentinel1.conf:/usr/local/etc/redis/sentinel.conf
   sentinel2:
-    image: redis
+    image: redis:7.0.11
     container_name: redis-sentinel-2
     ports:
     - 26380:26379
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./sentinel2.conf:/usr/local/etc/redis/sentinel.conf
   sentinel3:
-    image: redis
+    image: redis:7.0.11
     container_name: redis-sentinel-3
     ports:
       - 26381:26379

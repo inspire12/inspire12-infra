@@ -1,0 +1,33 @@
+version: '3'
+services:
+  redis-master:
+    container_name: "redis-master"
+    image: redis
+    ports:
+      - "6379:6379"
+    command: "redis-server /etc/redis-config/redis.conf"
+    volumes:
+      - "./data/master:/data/"
+      - "./config/redis-master:/etc/redis-config"
+  redis-slave:
+    container_name: "redis-slave"
+    image: redis
+    ports:
+      - "6380:6379"
+    command: "redis-server /etc/redis-config/redis.conf"
+    volumes:
+      - "./data/slave:/data/"
+      - "./config/redis-slave:/etc/redis-config"
+    depends_on:
+      - redis-master
+  redis-sentinel:
+    container_name: 'redis-sentinel'
+    image: redis
+    ports:
+      - "26379:26379"
+    command: "redis-server /etc/redis-config/redis.conf --sentinel"
+    volumes:
+      - "./config/redis-sentinel:/etc/redis-config"
+    depends_on:
+      - redis-master
+      - redis-slave

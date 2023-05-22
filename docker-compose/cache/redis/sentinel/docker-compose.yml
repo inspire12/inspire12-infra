@@ -5,7 +5,7 @@ services:
     container_name: redis-sentinel-1
     ports:
       - 26379:26379
-    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf --sentinel
     volumes:
       - ./sentinel1.conf:/usr/local/etc/redis/sentinel.conf
   sentinel2:
@@ -13,7 +13,7 @@ services:
     container_name: redis-sentinel-2
     ports:
     - 26380:26379
-    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf --sentinel
     volumes:
       - ./sentinel2.conf:/usr/local/etc/redis/sentinel.conf
   sentinel3:
@@ -21,7 +21,7 @@ services:
     container_name: redis-sentinel-3
     ports:
       - 26381:26379
-    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf --sentinel
     volumes:
       - ./sentinel3.conf:/usr/local/etc/redis/sentinel.conf
 networks:

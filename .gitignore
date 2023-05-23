@@ -43,3 +43,4 @@ out/
 *.db
 *csv
 *.rdb
+**/data/**

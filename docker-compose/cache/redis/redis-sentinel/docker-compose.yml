@@ -26,8 +26,7 @@ services:
     ports:
       - "26379:26379"
     command: >
-      bash -c "chmod 777 /etc/redis-config/redis.conf
-      && redis-server /etc/redis-config/redis.conf --sentinel"
+      bash -c "redis-server /etc/redis-config/redis.conf --sentinel"
     volumes:
       - "./config/redis-sentinel:/etc/redis-config"
     depends_on:

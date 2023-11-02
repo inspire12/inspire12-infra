@@ -1,0 +1,1 @@
+[**Beautiful Load Testing With K6 and Docker Compose**](https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3)

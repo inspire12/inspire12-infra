@@ -5,3 +5,4 @@ influxdb/types.db/
 .DS_Store
 jmeter-scripts/results
 jmeter.log
+*-inspire12.jmx

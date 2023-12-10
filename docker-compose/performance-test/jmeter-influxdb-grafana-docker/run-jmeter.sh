@@ -7,7 +7,7 @@ docker run \
   --volume "${volume_path}":${jmeter_path} \
   justb4/jmeter \
   -n \
-  -t ${jmeter_path}/example.jmx \
+  -t ${jmeter_path}/example-inspire12.jmx \
   -JINFLUXDB_HOST="host.docker.internal" \
   -l ${jmeter_path}/results/result_${timestamp}.jtl \
   -j ${jmeter_path}/results/jmeter_${timestamp}.log 

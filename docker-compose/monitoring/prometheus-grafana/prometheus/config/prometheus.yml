@@ -19,7 +19,7 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['http://prometheus:9090']
 
   # 이 설정에서 수집한 타임시리즈에 `job=<job_name>`으로 잡의 이름을 설정한다.
   # metrics_path의 기본 경로는 '/metrics'이고 scheme의 기본값은 `http`다
@@ -38,7 +38,7 @@ scrape_configs:
 
     # 실제 scrap 하는 타겟에 관한 설정
     static_configs:
-      - targets: ['172.30.1.1:8080'] ## prometheus, node-exporter, cadvisor
+      - targets: ['host.docker.internal:8080'] ## prometheus, node-exporter, cadvisor
 
 
     # relabel_config - 스크랩되기 전의 label들을 수정

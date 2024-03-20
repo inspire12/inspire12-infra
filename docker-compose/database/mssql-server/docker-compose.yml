@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  mssql:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: MS_SQL_Server
+    restart: always
+    environment:
+      SA_PASSWORD: "abcde12#"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    ports:
+      # The default port of SQL Server is 1433. Let's also tell the container that the use its port 1433 to connect to port 1433 of sql server
+      - 1433:1433
+    networks:
+      - dev
+
+volumes:
+  mssql-data:
+    # actually this is the default
+    driver: local
+
+networks:
+  dev:
+    # actually this is the default
+    driver: bridge

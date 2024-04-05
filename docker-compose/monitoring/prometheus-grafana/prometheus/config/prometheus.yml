@@ -19,7 +19,7 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['http://prometheus:9090']
+      - targets: ['host.docker.internal:9090']
 
   # 이 설정에서 수집한 타임시리즈에 `job=<job_name>`으로 잡의 이름을 설정한다.
   # metrics_path의 기본 경로는 '/metrics'이고 scheme의 기본값은 `http`다
@@ -32,10 +32,6 @@ scrape_configs:
     scheme: 'http'              # 옵션 - request 를 보낼 scheme 설정 | default = http
 #    params:                     # 옵션 - request 요청 보낼 떄의 param
 #      user-id: ['ox4443@naver.com']
-
-    # 그 외에도 authorization 설정
-    # service discovery 설정(sd)
-
     # 실제 scrap 하는 타겟에 관한 설정
     static_configs:
       - targets: ['host.docker.internal:8080'] ## prometheus, node-exporter, cadvisor

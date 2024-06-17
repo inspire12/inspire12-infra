@@ -1,4 +1,4 @@
-# server-docker-compose.yml.yml
+# server-docker-compose.yml.yml.yml
 version: '3'
 
 services:

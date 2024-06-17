@@ -1,0 +1,32 @@
+
+
+services:
+  KafkaTestWebUiService:
+    image: provectuslabs/kafka-ui:latest
+    restart: unless-stopped
+    container_name: KafkaTestWebUiService
+    ports:
+      - '8089:8080'
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=KAFKA-LOCAL-Cluster
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=172.20.94.133:9092,172.20.94.134:9092,172.20.94.135:9092
+      - DYNAMIC_CONFIG_ENABLED=true
+      - KAFKA_CLUSTERS_0_AUDIT_TOPICAUDITENABLED=true
+      - KAFKA_CLUSTERS_0_AUDIT_CONSOLEAUDITENABLED=true
+      #- KAFKA_CLUSTERS_0_METRICS_PORT=9999
+    networks:
+      - kafka_network
+
+volumes:
+  postgres-db-volume:
+  Kafka00:
+    driver: local
+  Kafka01:
+    driver: local
+  Kafka02:
+    driver: local
+
+networks:
+  kafka_network:
+    driver: bridge
+

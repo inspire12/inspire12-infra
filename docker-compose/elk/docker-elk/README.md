@@ -135,7 +135,7 @@ git clone https://github.com/deviantony/docker-elk.git
 Then, start the stack components locally with Docker Compose:
 
 ```sh
-docker-compose.yml up
+docker-compose.yml.yml up
 ```
 
 > **Note**  
@@ -173,15 +173,15 @@ reset the passwords of all aforementioned Elasticsearch users to random secrets.
     of them.
 
     ```sh
-    docker-compose.yml exec elasticsearch bin/elasticsearch-reset-password --batch --user elastic
+    docker-compose.yml.yml exec elasticsearch bin/elasticsearch-reset-password --batch --user elastic
     ```
 
     ```sh
-    docker-compose.yml exec elasticsearch bin/elasticsearch-reset-password --batch --user logstash_internal
+    docker-compose.yml.yml exec elasticsearch bin/elasticsearch-reset-password --batch --user logstash_internal
     ```
 
     ```sh
-    docker-compose.yml exec elasticsearch bin/elasticsearch-reset-password --batch --user kibana_system
+    docker-compose.yml.yml exec elasticsearch bin/elasticsearch-reset-password --batch --user kibana_system
     ```
 
     If the need for it arises (e.g. if you want to [collect monitoring information][ls-monitoring] through Beats and
@@ -210,7 +210,7 @@ reset the passwords of all aforementioned Elasticsearch users to random secrets.
 1. Restart Logstash and Kibana to re-connect to Elasticsearch using the new passwords
 
     ```sh
-    docker-compose.yml up -d logstash kibana
+    docker-compose.yml.yml up -d logstash kibana
     ```
 
 > **Note**  
@@ -247,7 +247,7 @@ Elasticsearch data is persisted inside a volume by default.
 In order to entirely shutdown the stack and remove all persisted data, use the following Docker Compose command:
 
 ```sh
-docker-compose.yml down -v
+docker-compose.yml.yml down -v
 ```
 
 ### Version selection

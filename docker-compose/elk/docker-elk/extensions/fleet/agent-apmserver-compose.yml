@@ -4,8 +4,8 @@ version: '3.7'
 # for running the APM Server integration (see kibana.yml).
 #
 # Run with
-#   docker-compose.yml \
-#     -f server-docker-compose.yml.yml \
+#   docker-compose.yml.yml \
+#     -f server-docker-compose.yml.yml.yml \
 #     -f extensions/fleet/fleet-compose.yml \
 #     -f extensions/fleet/agent-apmserver-compose.yml \
 #     up

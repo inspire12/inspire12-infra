@@ -21,16 +21,39 @@
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
-        <intProp name="ThreadGroup.num_threads">66</intProp>
+        <intProp name="ThreadGroup.num_threads">3</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">3</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
+        <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config">
+          <stringProp name="filename">C:/Users/inspire12/Documents/workspace/infra-project/jmeter-influxdb-grafana-docker/jmeter-scripts/login_log-data-sample.txt</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="variableNames">produce_data</stringProp>
+          <boolProp name="randomOrder">true</boolProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="rewindOnTheEndOfList">false</boolProp>
+          <boolProp name="independentListPerThread">true</boolProp>
+        </com.blazemeter.jmeter.RandomCSVDataSetConfig>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">C:/Users/inspire12/Documents/workspace/infra-project/jmeter-influxdb-grafana-docker/jmeter-scripts/login_log-data-sample.txt</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">produce_data</stringProp>
+        </CSVDataSet>
+        <hashTree/>
         <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer">
           <intProp name="calcMode">1</intProp>
           <doubleProp>
@@ -70,20 +93,7 @@
           <stringProp name="kafkaTopic">shield-test</stringProp>
           <stringProp name="partitionString"></stringProp>
           <stringProp name="kafkaMessageKey">Key</stringProp>
-          <stringProp name="kafkaMessage">&lt;Message&gt;
-&lt;KEY&gt;${msg_count}&lt;/KEY&gt;
-&lt;UserId&gt;AA45BC55-1033-422c-B5DA-90B13CC10088&lt;/UserId&gt;
-&lt;Action&gt;login&lt;/Action&gt;
-&lt;AppGroupCode&gt;1ms&lt;/AppGroupCode&gt;
-&lt;ProductId&gt;1090&lt;/ProductId&gt;
-&lt;Signin&gt;false&lt;/Signin&gt;
-&lt;AuthnType&gt;203&lt;/AuthnType&gt;
-&lt;UserCredentialCode&gt;npphone&lt;/UserCredentialCode&gt;
-&lt;PresencesTargeted&gt;0&lt;/PresencesTargeted&gt;
-&lt;IpAddress&gt;59.16.156.246:80&lt;/IpAddress&gt;
-&lt;DateTime&gt;2024-05-26T22:18:03Z&lt;/DateTime&gt;
-&lt;/Message&gt;
-</stringProp>
+          <stringProp name="kafkaMessage">${produce_data}</stringProp>
           <collectionProp name="messageHeaders"/>
         </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
         <hashTree/>

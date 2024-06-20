@@ -3,7 +3,8 @@ services:
     container_name: grafana
     image: grafana/grafana:latest
     environment:
-      - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app,grafana-clock-panel,grafana-simple-json-datasource,heywesty-trafficlight-panel
+      - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app,grafana-clock-panel,grafana-simple-json-datasource,heywesty-trafficlight-panel,sentinelone-dataset-datasource
+      - GF_PANELS_ENABLE_ALPHA=true
     volumes:
       - ./etc/grafana/:/etc/grafana/provisioning/datasources
       - ./etc/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml

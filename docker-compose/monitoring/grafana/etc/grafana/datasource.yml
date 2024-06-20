@@ -20,8 +20,7 @@ datasources:
     user: 'root'
     database: 'inspire12'
   - uid: op-mysql
-    orgId: 2
-    name: mysql
+    name: op-mysql
     type: mysql
     url: 172.19.217.124:3306
     secureJsonData:

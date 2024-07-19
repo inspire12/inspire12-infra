@@ -122,7 +122,7 @@
               "lookup": "metric",
               "mode": "lookup"
             },
-            "name": "Layer 1",
+            "name": "User count",
             "tooltip": true,
             "type": "markers"
           }
@@ -141,7 +141,7 @@
           "zoom": 1
         }
       },
-      "pluginVersion": "11.0.0",
+      "pluginVersion": "11.0.1",
       "targets": [
         {
           "dataset": "airflow",
@@ -152,7 +152,137 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  UNIX_TIMESTAMP(`timestamp`) as time_sec,\r\n  `value` as value,\r\n  country_code as metric\r\nFROM worldmap\r\n\r\nORDER BY `timestamp` ASC",
+          "rawSql": "SELECT\r\n  UNIX_TIMESTAMP(`timestamp`) as time_sec,\r\n  `value` as value,\r\n  country_code as metric\r\nFROM worldmap\r\nwhere `timestamp`  >=DATE_FORMAT(CURDATE(), '%Y-%m-%d')\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Geo map panel",
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "op-mysql"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "blur": 3,
+              "radius": 18,
+              "weight": {
+                "field": "value",
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "A"
+            },
+            "location": {
+              "lookup": "metric",
+              "mode": "lookup"
+            },
+            "name": "Count",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": false,
+          "id": "coords",
+          "lastOnly": true,
+          "lat": 0,
+          "layer": "Layer 1",
+          "lon": 0,
+          "shared": false,
+          "zoom": 1
+        }
+      },
+      "pluginVersion": "11.0.1",
+      "targets": [
+        {
+          "dataset": "airflow",
+          "datasource": {
+            "type": "mysql",
+            "uid": "op-mysql"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  UNIX_TIMESTAMP(`timestamp`) as time_sec,\r\n  `value` as value,\r\n  country_code as metric\r\nFROM worldmap\r\nwhere `timestamp`  >=DATE_FORMAT(CURDATE(), '%Y-%m-%d')\r\n",
           "refId": "A",
           "sql": {
             "columns": [
@@ -199,7 +329,7 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1,
+            "lineWidth": 2,
             "scaleDistribution": {
               "type": "linear"
             },
@@ -264,7 +394,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select DATE_FORMAT(created,'%Y-%m-%d %H') m, count(user_id)  from shield_log.shield_log_test where created >=\"2024-06-18\" and topic = 'shield-test' group by m;",
+          "rawSql": "select * from shield_indicator_login order by hour;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -287,6 +417,92 @@
       ],
       "title": "Panel Title",
       "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "mysql-32g"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 15
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "addUrl": false,
+        "cellPadding": 5,
+        "cellSize": 15,
+        "defaultColor": "#E6E6E6",
+        "inputList": false,
+        "nullColor": "#E6E6E6",
+        "sourceField": "from",
+        "sourceText": "From",
+        "targetField": "to",
+        "targetText": "To",
+        "txtLength": 50,
+        "txtSize": 10,
+        "valueField": "value",
+        "valueText": "Value"
+      },
+      "pluginVersion": "11.0.1",
+      "targets": [
+        {
+          "dataset": "mysql",
+          "datasource": {
+            "type": "mysql",
+            "uid": "mysql-32g"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select * from shield_log.shield_log_matrix;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Panel Title",
+      "type": "esnet-matrix-panel"
     },
     {
       "datasource": {
@@ -346,7 +562,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "select count(user_id) from shield_log.shield_log_test where created >=\"2024-06-18\" and topic = 'shield-test';",
+          "rawSql": "select value from shield_log.shield_indicator_login order by hour desc LIMIT 1;",
           "refId": "A",
           "sql": {
             "columns": [

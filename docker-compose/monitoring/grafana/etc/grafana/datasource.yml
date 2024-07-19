@@ -27,4 +27,11 @@ datasources:
       password: 'abcde12#'
     user: 'root'
     database: 'shield_log'
-
+  - uid: mysql-32g
+    name: mysql-32g
+    type: mysql
+    url: 172.19.189.135:3306
+    secureJsonData:
+      password: 'abcde12#'
+    user: 'inspire12'
+    database: 'shield_log'

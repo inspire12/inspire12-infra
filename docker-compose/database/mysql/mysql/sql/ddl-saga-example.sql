@@ -1,3 +1,4 @@
+# https://github.com/beer-one/distribution-transaction-example.git
 # create databases
 CREATE DATABASE IF NOT EXISTS `saga_order`;
 CREATE DATABASE IF NOT EXISTS `saga_account`;

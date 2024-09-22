@@ -15,10 +15,10 @@ services:
     restart: unless-stopped
     container_name: KafkaTestWebUiService
     ports:
-      - '8089:8080'
+      - '8088:8080'
     environment:
       - KAFKA_CLUSTERS_0_NAME=KAFKA-LOCAL-Cluster
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=172.20.94.133:9092,172.20.94.134:9092,172.20.94.135:9092
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=localhost:9092,localhost:29092
       - DYNAMIC_CONFIG_ENABLED=true
       - KAFKA_CLUSTERS_0_AUDIT_TOPICAUDITENABLED=true
       - KAFKA_CLUSTERS_0_AUDIT_CONSOLEAUDITENABLED=true
@@ -35,12 +35,13 @@ services:
     depends_on:
       - zookeeper
     ports:
+      - "9092:9092"
       - "29092:29092"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://broker:9092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092,DOCKER://host.docker.internal:29092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
@@ -54,7 +55,7 @@ services:
     depends_on:
       - broker
     ports:
-      - "8088:8088"
+      - "8089:8088"
     environment:
       KSQL_LISTENERS: http://0.0.0.0:8088
       KSQL_BOOTSTRAP_SERVERS: broker:9092

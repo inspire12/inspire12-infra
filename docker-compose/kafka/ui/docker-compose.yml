@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     container_name: KafkaTestWebUiService
     ports:
-      - '8089:8080'
+      - '8087:8080'
     environment:
       - KAFKA_CLUSTERS_0_NAME=KAFKA-LOCAL-Cluster
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=172.20.94.133:9092,172.20.94.134:9092,172.20.94.135:9092

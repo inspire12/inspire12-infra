@@ -1,7 +1,7 @@
 
 services:
   influxdb:
-    image: influxdb:1.8
+    image: influxdb:1.8.9
     container_name: influxdb
     ports:
       - "8086:8086" # InfluxDB HTTP API 포트
@@ -18,7 +18,8 @@ services:
       - ./influxdb/config/influxdb.conf:/etc/influxdb/influxdb.conf # 사용자 정의 설정 파일 마운트
     command: influxd -config /etc/influxdb/influxdb.conf
     restart: unless-stopped
-
+    extra_hosts:
+      - host.docker.internal:host-gateway
   chronograf:
     image: chronograf:1.8
     container_name: chronograf
@@ -30,7 +31,14 @@ services:
     volumes:
       - chronograf_data:/var/lib/chronograf
     restart: unless-stopped
-
+    extra_hosts:
+      - host.docker.internal:host-gateway
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: "172.27.0.0/24"
+          gateway: "172.27.0.1"
 volumes:
   influxdb_data:
     driver: local

@@ -1,0 +1,25 @@
+[user]
+        name = inspire12
+        email = ox4443@naver.com
+# [safe]
+#         directory = C:/Users/inspire12/scoop/buckets/nerd-fonts
+[credential "helperselector"]
+        selected = manager
+[core]
+        autocrlf = true
+[credential "http://192.168.8.241:48320"]
+        provider = generic
+[alias]
+        logs = log --pretty=format:'%h %an %ar - %s'
+[merge]
+        conflictstyle = zdiff3
+[pull]
+        rebase = true
+[branch]
+        sort = -committerdate
+[branch "diff"]
+        algorithm = histogram
+[init]
+        defaultBranch = main
+[rebase]
+        autostash = true

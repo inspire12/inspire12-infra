@@ -10,4 +10,4 @@ docker run \
   -t ${jmeter_path}/$1 \
   -JINFLUXDB_HOST="host.docker.internal" \
   -l ${jmeter_path}/results/result_${timestamp}.jtl \
-  -j ${jmeter_path}/results/jmeter_${timestamp}.log 
+  -j ${jmeter_path}/results/jmeter_${timestamp}.log

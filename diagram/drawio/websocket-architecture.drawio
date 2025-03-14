@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" version="26.1.0">
+  <diagram name="페이지-1" id="O9mJQKmU8tjLzXW_FLk2">
+    <mxGraphModel dx="1835" dy="1947" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="TWfnbzdua7WBBadpNxpM-1" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://docs.spring.io/spring-framework/reference/_images/message-flow-simple-broker.png;" vertex="1" parent="1">
+          <mxGeometry x="230" y="-110" width="484.69" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-2" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://docs.spring.io/spring-framework/reference/_images/message-flow-broker-relay.png;" vertex="1" parent="1">
+          <mxGeometry x="220" y="110" width="492.53" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-28" value="SEND&lt;div&gt;destination: /app/a&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-530" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-31" value="SEND&lt;div&gt;destination: /app/a&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-520" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-41" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;&quot;/app&quot;&lt;/font&gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="TWfnbzdua7WBBadpNxpM-35" target="TWfnbzdua7WBBadpNxpM-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-43" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;&quot;/topic&quot;&lt;/font&gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="TWfnbzdua7WBBadpNxpM-35" target="TWfnbzdua7WBBadpNxpM-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-35" value="&lt;b&gt;request&amp;nbsp;&lt;/b&gt;&lt;div&gt;channel&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.direct_data;whiteSpace=wrap;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-350" y="100" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-36" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="-400" y="119" as="sourcePoint" />
+            <mxPoint x="-350" y="119" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="TWfnbzdua7WBBadpNxpM-40" target="TWfnbzdua7WBBadpNxpM-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-40" value="&lt;b&gt;SimpAnnotationMethod&lt;/b&gt;&lt;div&gt;MessageHandler&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+          <mxGeometry x="-190" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-42" value="&lt;b&gt;SimpleBroker&lt;/b&gt;&lt;div&gt;MessageHandler&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#a0522d;fontColor=#ffffff;strokeColor=#6D1F00;" vertex="1" parent="1">
+          <mxGeometry x="-190" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="TWfnbzdua7WBBadpNxpM-44" target="TWfnbzdua7WBBadpNxpM-42">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="110" y="70" />
+              <mxPoint x="110" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-48" value="&quot;/topic&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="TWfnbzdua7WBBadpNxpM-46">
+          <mxGeometry x="0.5286" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-44" value="&lt;b&gt;broker&lt;/b&gt;&lt;div&gt;channel&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.direct_data;whiteSpace=wrap;fillColor=#a0522d;fontColor=#ffffff;strokeColor=#6D1F00;" vertex="1" parent="1">
+          <mxGeometry y="50" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TWfnbzdua7WBBadpNxpM-49" value="&lt;b&gt;response&amp;nbsp;&lt;/b&gt;&lt;div&gt;channel&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.direct_data;whiteSpace=wrap;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-350" y="270" width="90" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

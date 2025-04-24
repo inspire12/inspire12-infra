@@ -1,0 +1,11 @@
+services:
+  neo4j:
+    container_name: neo4j-boot
+    image: neo4j:5.22.0
+    ports:
+      - 7474:7474	# for browser console
+      - 7687:7687	# for db
+    volumes:
+      - ./data:/data		# volume mount
+    environment:
+      NEO4J_AUTH: neo4j/abcde12#	# admin/password

@@ -1,0 +1,9 @@
+#!/bin/env bash
+
+awk -F"=" '
+BEGIN { OFS = "=" }
+{
+  len = length($2);
+  $2 = sprintf("%*s", len, "") gsub(/./, "*", $2);
+  print $1, $2;
+}'

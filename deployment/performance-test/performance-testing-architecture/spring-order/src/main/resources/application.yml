@@ -1,0 +1,63 @@
+
+spring:
+
+#  datasource:
+#    username: postgres
+#    url: jdbc:postgresql://db-service:5432/postgres?currentSchema=library
+#    password: postgres
+#    hikari:
+#      maximumPoolSize: ${POOL_SIZE}
+#      minimum-idle: ${POOL_SIZE}
+#      poolName: jdbc-pool
+#      idleTimeout: 1800000
+
+#  jpa:
+#    generate-ddl: false
+#    database: POSTGRESQL
+#    properties:
+#      hibernate:
+#        default_schema: library
+#      show-sql: true
+#      format_sql: true
+#    hibernate:
+#      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://localhost:3306/ORDERS?serverTimezone=UTC&characterEncoding=UTF-8
+    username: 'root'
+    password: 'abcde12#'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    defer-datasource-initialization: true
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  sql:
+    init:
+      mode: ALWAYS # 데이터베이스 초기화 시 data.sql을 항상 실행
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+#      settings:
+#        web-allow-others: true
+server:
+  port: '8080'
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: spring-order

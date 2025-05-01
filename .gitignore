@@ -49,3 +49,10 @@ out/
 *.rdb
 **/data/**
 **/logs/**
+
+*-data/**
+
+**/grafana-data/**
+**/prometheus-data/**
+**/loki-data/**
+**.log

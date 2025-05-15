@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8.0
+#    restart: always
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/sql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=saga_order
+      - MYSQL_USER=saga-tester
+      - MYSQL_PASSWORD=sagatest
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"

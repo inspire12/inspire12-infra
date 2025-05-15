@@ -1,0 +1,93 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - kafka_service
+  KafkaTestWebUiService:
+    image: provectuslabs/kafka-ui:latest
+    restart: unless-stopped
+    container_name: KafkaTestWebUiService
+    ports:
+      - '8087:8080'
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=KAFKA-LOCAL-Cluster
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=172.20.94.133:9092,172.20.94.134:9092,172.20.94.135:9092
+      - DYNAMIC_CONFIG_ENABLED=true
+      - KAFKA_CLUSTERS_0_AUDIT_TOPICAUDITENABLED=true
+      - KAFKA_CLUSTERS_0_AUDIT_CONSOLEAUDITENABLED=true
+      - KAFKA_CLUSTERS_0_ZOOKEEPER=172.20.94.136:2181,172.20.94.137:2181,172.20.94.138:2181
+      - KAFKA_CLUSTERS_1_NAME=KSQL-LOCAL-Cluster
+      - KAFKA_CLUSTERS_1_BOOTSTRAPSERVERS=broker:29092
+      - DYNAMIC_CONFIG_ENABLED=true
+      - KAFKA_CLUSTERS_1_AUDIT_TOPICAUDITENABLED=true
+      - KAFKA_CLUSTERS_1_AUDIT_CONSOLEAUDITENABLED=true
+      - KAFKA_CLUSTERS_1_KSQLDBSERVER=http://ksqldb-server:8088
+      - KAFKA_CLUSTERS_2_NAME=KAFKA-OP-Cluster
+      - KAFKA_CLUSTERS_2_BOOTSTRAPSERVERS=172.20.92.160:9092,172.20.92.164:9092,172.20.92.167:9092
+      - DYNAMIC_CONFIG_ENABLED=true
+      - KAFKA_CLUSTERS_2_AUDIT_TOPICAUDITENABLED=true
+      - KAFKA_CLUSTERS_2_AUDIT_CONSOLEAUDITENABLED=true
+
+      - AUTH_TYPE=LOGIN_FORM
+      - SPRING_SECURITY_USER_NAME=admin
+      - SPRING_SECURITY_USER_PASSWORD=pass
+      #- KAFKA_CLUSTERS_0_METRICS_PORT=9999
+    networks:
+      - kafka_service
+  broker:
+    image: confluentinc/cp-kafka:7.4.0
+    hostname: broker
+    container_name: broker
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://broker:9092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092,DOCKER://host.docker.internal:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    networks:
+      - kafka_service
+  ksqldb-server:
+    image: confluentinc/ksqldb-server:0.29.0
+    hostname: ksqldb-server
+    container_name: ksqldb-server
+    depends_on:
+      - broker
+    ports:
+      - "8088:8088"
+    environment:
+      KSQL_LISTENERS: http://0.0.0.0:8088
+      KSQL_BOOTSTRAP_SERVERS: broker:9092
+      KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
+      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"
+    networks:
+      - kafka_service
+  ksqldb-cli:
+    image: confluentinc/ksqldb-cli:0.29.0
+    container_name: ksqldb-cli
+    depends_on:
+      - broker
+      - ksqldb-server
+    entrypoint: /bin/sh
+    tty: true
+    networks:
+      - kafka_service
+
+networks:
+  kafka_service:
+    driver: bridge
+

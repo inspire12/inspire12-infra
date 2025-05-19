@@ -12,6 +12,8 @@ services:
       - "8086:8086"
     environment:
       - INFLUXDB_DB=k6
+    networks:
+      - load-testing-network
 
   grafana:
     container_name: grafana-performance
@@ -27,3 +29,5 @@ services:
       - ../grafana/dashboards:/var/lib/grafana/dashboards
       - ../grafana/grafana-dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
       - ../grafana/grafana-datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+    networks:
+      - load-testing-network

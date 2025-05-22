@@ -5,7 +5,7 @@ import { Counter } from 'k6/metrics';
 
 export const options = {
   vus: 10,
-  duration: '19s',
+  duration: '10s',
 };
 
 function createStompConnectFrame(token) {
@@ -46,7 +46,7 @@ export default function () {
   const token = username; // 실제로는 JWT를 넣어야 함
   
   const res = ws.connect(url, {}, function (socket) {
-    console.log('connect')
+    console.log('start 연결')
     socket.on('open', function () {
       console.log(`✅ WebSocket 연결됨: ${username}`);
       socket.send(createStompConnectFrame(token));

@@ -1,0 +1,17 @@
+name: Decrement D-n labels on issues
+
+on:
+  schedule:
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+permissions:
+  issues: write
+
+jobs:
+  d-day:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update D-n Labels
+        uses: yj-circle/issue-d-day-labeler@v1.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
